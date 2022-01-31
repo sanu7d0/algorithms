@@ -1,0 +1,6 @@
+# vscodes
+.vscode
+*.code-workspace
+
+# debugs
+*.exe
