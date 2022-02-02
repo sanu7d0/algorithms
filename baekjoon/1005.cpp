@@ -1,3 +1,5 @@
+// other's approach: topological sort
+
 #include <stdio.h>
 #include <vector>
 using namespace std;
