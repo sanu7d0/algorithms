@@ -1,6 +1,13 @@
 # vscodes
 .vscode
 *.code-workspace
+.editorconfig
 
-# debugs
+# build and debug
+build.bat
+build/
+builds/
 *.exe
+*.ilk
+*.obj
+*.pdb
