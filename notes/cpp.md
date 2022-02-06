@@ -41,4 +41,20 @@ freopen("input.txt", "r", stdin);
 
 - Expected = out.exe 파일 디렉토리 내의 input.txt를 가져온다
 - Actual work = 현재 실행하는 디렉토리 내의 input.txt를 가져온다  
-  -> ./input.txt 등으로 지정 해야할 듯?
+   -> ./input.txt 등으로 지정 해야할 듯?
+
+  2022.02.06) 위의 설명은 틀림. vscode launch.json/task.json의 cwd 옵션 디렉토리를 참고하는 것이다
+
+$~$
+
+# 비트 연산자 & | ^
+
+일련의 input에서, n 쌍의 input과 하나의 input이 있을 때 ex) 5 5 3 3 7  
+ ^(XOR) 연산자를 이용하면 '7'을 쉽게 구할 수 있다
+
+```C++
+int x = 0;
+while (~)
+ x ^= input;
+// x == 7
+```

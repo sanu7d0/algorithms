@@ -6,13 +6,10 @@ using namespace std;
 
 int main()
 {
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
-
-    for (const string& word : msg)
-    {
-        cout << word << " ";
-    }
-    cout << endl;
+    freopen("input.txt", "r", stdin);
+    int a;
+    cin >> a;
+    cout << a << endl;
 
     return 0;
 }

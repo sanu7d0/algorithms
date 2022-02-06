@@ -1,12 +1,12 @@
 # vscodes
-.vscode
+# .vscode
+c_cpp_properties.json
+settings.json
 *.code-workspace
 .editorconfig
 
 # build and debug
-build.bat
 build/
-builds/
 *.exe
 *.ilk
 *.obj

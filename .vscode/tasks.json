@@ -1,0 +1,55 @@
+{
+  "version": "2.0.0",
+  "command": "cmd",
+  "type": "shell",
+  "presentation": {
+    "echo": true,
+    "reveal": "always",
+    "focus": false,
+    "panel": "shared",
+    "showReuseMessage": true,
+    "clear": false
+  },
+  "tasks": [
+    {
+      "label": "cpp-build",
+      "type": "process",
+      "command": "${workspaceFolder}\\build_cpp.bat",
+      "args": [
+        "/Zi",
+        "/EHsc",
+        "/std:c++17",
+        "/Fe:",
+        "${fileDirname}\\build\\out.exe",
+        "/Fo:",
+        "${fileDirname}\\build\\out.obj",
+        "${file}"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$msCompile"]
+    },
+    {
+      "label": "cpp-build-run",
+      "type": "process",
+      "command": "${fileDirname}\\build\\out.exe",
+      "options": { "cwd": "${fileDirname}\\build" },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["cpp-build"]
+    },
+    {
+      "label": "cpp-test",
+      "command": "${fileDirname}\\build\\out.exe",
+      "type": "process",
+      "options": { "cwd": "${fileDirname}\\build" },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    }
+  ]
+}
