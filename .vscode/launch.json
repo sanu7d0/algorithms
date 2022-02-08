@@ -2,16 +2,28 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "cl.exe - Build and debug active file",
+      "name": "cpp-debug",
       "type": "cppvsdbg",
       "request": "launch",
-      "program": "${fileDirname}\\build\\out.exe",
-      "args": [],
+      "cwd": "${fileDirname}\\..\\build",
+      "program": "out.exe",
+      "args": ["<", "input.txt"],
       "stopAtEntry": false,
-      "cwd": "${fileDirname}\\build",
       "environment": [],
       "console": "integratedTerminal",
       "preLaunchTask": "cpp-build"
+    },
+    {
+      "name": "rust-debug",
+      "type": "lldb",
+      "request": "launch",
+      "cwd": "${fileDirname}\\..\\build",
+      "program": "out.exe",
+      "args": ["<", "input.txt"],
+      "stopAtEntry": false,
+      "environment": [],
+      "console": "integratedTerminal",
+      "preLaunchTask": "rust-build"
     }
   ]
 }

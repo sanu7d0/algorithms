@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    freopen("input.txt", "r", stdin);
+    cout << "start" << endl;
     int a;
     cin >> a;
     cout << a << endl;

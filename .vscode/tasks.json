@@ -8,7 +8,7 @@
     "focus": false,
     "panel": "shared",
     "showReuseMessage": true,
-    "clear": false
+    "clear": true
   },
   "tasks": [
     {
@@ -20,21 +20,19 @@
         "/EHsc",
         "/std:c++17",
         "/Fe:",
-        "${fileDirname}\\build\\out.exe",
+        "${fileDirname}\\..\\build\\out.exe",
         "/Fo:",
-        "${fileDirname}\\build\\out.obj",
+        "${fileDirname}\\..\\build\\out.obj",
         "${file}"
       ],
-      "options": {
-        "cwd": "${fileDirname}"
-      },
       "problemMatcher": ["$msCompile"]
     },
     {
       "label": "cpp-build-run",
-      "type": "process",
-      "command": "${fileDirname}\\build\\out.exe",
-      "options": { "cwd": "${fileDirname}\\build" },
+      "type": "shell",
+      "options": { "cwd": "${fileDirname}\\..\\build" },
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
       "group": {
         "kind": "build",
         "isDefault": true
@@ -43,9 +41,40 @@
     },
     {
       "label": "cpp-test",
-      "command": "${fileDirname}\\build\\out.exe",
+      "type": "shell",
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "options": { "cwd": "${fileDirname}\\..\\build" },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "rust-build",
       "type": "process",
-      "options": { "cwd": "${fileDirname}\\build" },
+      "command": "rustc",
+      "args": ["${file}", "-o", "${fileDirname}\\..\\build\\out.exe"],
+      "problemMatcher": "$rustc"
+    },
+    {
+      "label": "rust-build-run",
+      "type": "shell",
+      "options": { "cwd": "${fileDirname}\\..\\build" },
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["rust-build"]
+    },
+    {
+      "label": "rust-test",
+      "options": { "cwd": "${fileDirname}\\..\\build" },
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "type": "shell",
       "group": {
         "kind": "test",
         "isDefault": true
