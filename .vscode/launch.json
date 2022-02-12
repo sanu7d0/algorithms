@@ -14,6 +14,18 @@
       "preLaunchTask": "cpp-build"
     },
     {
+      "name": "c-debug",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "cwd": "${fileDirname}\\..\\build",
+      "program": "out.exe",
+      "args": ["<", "input.txt"],
+      "stopAtEntry": false,
+      "environment": [],
+      "console": "integratedTerminal",
+      "preLaunchTask": "c-build"
+    },
+    {
       "name": "rust-debug",
       "type": "lldb",
       "request": "launch",

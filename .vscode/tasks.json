@@ -51,6 +51,45 @@
       }
     },
     {
+      "label": "c-build",
+      "type": "process",
+      "command": "${workspaceFolder}\\build_cpp.bat",
+      "args": [
+        "/Zi",
+        "/EHsc",
+        "/std:c17",
+        "/Fe:",
+        "${fileDirname}\\..\\build\\out.exe",
+        "/Fo:",
+        "${fileDirname}\\..\\build\\out.obj",
+        "${file}"
+      ],
+      "problemMatcher": ["$msCompile"]
+    },
+    {
+      "label": "c-build-run",
+      "type": "shell",
+      "options": { "cwd": "${fileDirname}\\..\\build" },
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["c-build"]
+    },
+    {
+      "label": "c-test",
+      "type": "shell",
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "options": { "cwd": "${fileDirname}\\..\\build" },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
       "label": "rust-build",
       "type": "process",
       "command": "rustc",
