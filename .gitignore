@@ -1,9 +1,10 @@
-# vscode
+# vscodes
+.vscode
+*.code-workspace
 settings.json
 
-# build
-
-
+# debugs
+*.exe
 # rust-cargo
 /target
 Cargo.lock
