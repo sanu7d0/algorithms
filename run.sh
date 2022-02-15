@@ -1,0 +1,3 @@
+echo Running Container: algorithm...
+echo Bind `pwd` to /usr/src/workspace
+docker run -it --mount src=`pwd`,dst=/usr/src/workspace,type=bind --name=algo_ws algorithm

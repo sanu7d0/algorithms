@@ -1,0 +1,85 @@
+{
+  "version": "2.0.0",
+  "presentation": {
+    "echo": true,
+    "reveal": "always",
+    "focus": true,
+    "panel": "shared",
+    "showReuseMessage": true,
+    "clear": false
+  },
+  "tasks": [
+    {
+      "label": "c-build",
+      "type": "process",
+      "command": "gcc-11",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "${file}",
+        "-o",
+        "${workspaceFolder}/build/out.exe"
+      ],
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "c-build-run",
+      "type": "shell",
+      "options": { "cwd": "${workspaceFolder}/build" },
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["cpp-build"]
+    },
+    {
+      "label": "c-test",
+      "type": "shell",
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "options": { "cwd": "${workspaceFolder}/build" },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "cpp-build",
+      "type": "process",
+      "command": "g++-11",
+      "args": [
+        "-fdiagnostics-color=always",
+        "-g",
+        "${file}",
+        "-o",
+        "${workspaceFolder}/build/out.exe"
+      ],
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "cpp-build-run",
+      "type": "shell",
+      "options": { "cwd": "${workspaceFolder}/build" },
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["cpp-build"]
+    },
+    {
+      "label": "cpp-test",
+      "type": "shell",
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "options": { "cwd": "${workspaceFolder}/build" },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    }
+  ]
+}
