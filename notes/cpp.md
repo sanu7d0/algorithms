@@ -58,3 +58,16 @@ while (~)
  x ^= input;
 // x == 7
 ```
+
+$~$
+
+# VS Code GDB 디버깅
+
+GDB로 디버그 -> output이 버퍼에 걸려서 안 보인다
+
+```cpp
+// fastio // fastio는 지운다
+setvbuf(stdout, NULL, _IONBF, 0);
+```
+
+-> 보인다

@@ -1,3 +1,3 @@
-echo Running Container: algorithm...
-echo Bind `pwd` to /usr/src/workspace
-docker run -it --mount src=`pwd`,dst=/usr/src/workspace,type=bind --name=algo_ws algorithm
+echo Running image: gcc/gdb...
+echo Bind $PWD : /source
+docker run -it --mount src=$PWD,dst=/source,type=bind --name gcc_vscode gcc/gdb

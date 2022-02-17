@@ -1,9 +1,15 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
+    {
+      "name": "python-debug",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "cwd": "${workspaceFolder}/build",
+      "args": ["<", "input.txt"],
+      "console": "integratedTerminal"
+    },
     {
       "name": "cpp-debug",
       "type": "cppdbg",
@@ -15,7 +21,10 @@
       "environment": [],
       "externalConsole": false,
       "MIMode": "gdb",
-      "miDebuggerPath": "/usr/bin/gdb",
+      "linux": {
+        "miDebuggerPath": "/usr/bin/gdb",
+        "filterStdout": true
+      },
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
