@@ -1,41 +1,36 @@
-#include <algorithm>
-#include <functional>
+#include <cmath>
 #include <iostream>
+#include <vector>
 #define fastio cin.tie(0)->sync_with_stdio(0)
 using namespace std;
 
-struct Ad {
-    int c;    // cost
-    int r;    // return
-    double e; // efficiency
-};
+int ads[20][2];
+int sum[1001];
+int C, N;
+
+// ! 답지 보고 품
+int dp(int customer) {
+    if (customer <= 0)
+        return 0;
+    else if (sum[customer] > 0)
+        return sum[customer];
+
+    int minimum = 100000;
+    for (int i = 0; i < N; ++i) {
+        minimum = min(minimum, dp(customer - ads[i][1]) + ads[i][0]);
+    }
+    sum[customer] = minimum;
+
+    return minimum;
+}
 
 int main() {
     fastio;
 
-    int C, N, cost, ret;
-    Ad v[20];
-
     cin >> C >> N;
     for (int i = 0; i < N; ++i) {
-        cin >> cost >> ret;
-        v[i] = {cost, ret, (double)ret / cost};
+        cin >> ads[i][0] >> ads[i][1];
     }
 
-    sort(v, v + N,
-         [](Ad fisrt, Ad second) -> bool { return fisrt.r < second.r; });
-    sort(v, v + N,
-         [](Ad first, Ad second) -> bool { return first.e > second.e; });
-
-    int x, idx = 0;
-    cost = ret = 0;
-    while (ret < C) {
-        x = (C - ret) / v[idx].r;
-        ret += x * v[idx].r;
-        cost += x * v[idx].c;
-
-        idx++;
-    }
-
-    cout << cost << endl;
+    cout << dp(C) << endl;
 }

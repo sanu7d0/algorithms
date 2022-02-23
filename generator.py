@@ -1,4 +1,4 @@
-with open('./baekjoon/build/output.txt', 'w') as f:
-    for i in range(1, 123456-1):
-        f.write(f'S 1 {i+1}\n')
-    f.write('S 1 1');
+with open('./build/output.txt', 'w') as f:
+    f.flush()
+    for i in range(1, 65):
+        f.write(f'{i}\n')
