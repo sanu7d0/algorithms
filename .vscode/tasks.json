@@ -69,6 +69,35 @@
         "kind": "test",
         "isDefault": true
       }
+    },
+    {
+      "label": "rust-build",
+      "type": "process",
+      "command": "rustc",
+      "args": ["${file}", "-o", "${workspaceFolder}/build/out.exe"]
+    },
+    {
+      "label": "rust-build-run",
+      "type": "shell",
+      "options": { "cwd": "${workspaceFolder}/build" },
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "dependsOn": ["rust-build"]
+    },
+    {
+      "label": "rust-test",
+      "type": "shell",
+      "command": "./out.exe",
+      "args": ["<", "input.txt"],
+      "options": { "cwd": "${workspaceFolder}/build" },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
     }
   ]
 }

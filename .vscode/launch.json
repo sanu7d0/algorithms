@@ -2,6 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "rust-debug",
+      "type": "lldb",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/build",
+      "program": "${workspaceFolder}/build/out.exe",
+      "args": ["<", "input.txt"],
+    },
+    {
       "name": "python-debug",
       "type": "python",
       "request": "launch",

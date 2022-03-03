@@ -29,7 +29,7 @@
       "\t",
       "\tint N;",
       "\tcin >> N;",
-      "\twhile (N--) {",
+      "\tfor (int i = 0; i < N; ++i) {",
       "\t\t",
       "\t\tcout << 0 << \"\\n\";",
       "\t}",

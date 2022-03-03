@@ -3,8 +3,13 @@
 *.code-workspace
 settings.json
 
+# docker
+/builder-docker
+
 # debugs
+/build
 *.exe
+
 # rust-cargo
 /target
 Cargo.lock
