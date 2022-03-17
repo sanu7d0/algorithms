@@ -7,18 +7,18 @@ using namespace std;
 int main() {
     fastio;
 
-    int C;
-    cin >> C;
-    vector<int> v = vector<int>(C);
+    int N;
+    cin >> N;
+    vector<int> v = vector<int>(N);
 
-    for (int i = 0; i < C; ++i) {
+    for (int i = 0; i < N; ++i) {
         cin >> v[i];
     }
     sort(v.begin(), v.end());
 
-    if (C == 1)
-        cout << v[0] * v[0];
-    else {
-        cout << v[0] * v[C - 1];
+    for (int i = 0; i <= v[0]; ++i) {
+        for (int j = 0; j < N; ++j) {
+            if (v[j])
+        }
     }
 }
