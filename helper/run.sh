@@ -1,0 +1,3 @@
+echo Running image: gcc/gdb...
+echo Bind $PWD/.. : /source
+docker run -it --mount src=$PWD/..,dst=/source,type=bind --name gcc_vscode gcc/gdb

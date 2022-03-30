@@ -2,14 +2,6 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "rust-debug",
-      "type": "lldb",
-      "request": "launch",
-      "cwd": "${workspaceFolder}/build",
-      "program": "${workspaceFolder}/build/out.exe",
-      "args": ["<", "input.txt"],
-    },
-    {
       "name": "python-debug",
       "type": "python",
       "request": "launch",
@@ -31,14 +23,19 @@
       "MIMode": "gdb",
       "linux": {
         "miDebuggerPath": "/usr/bin/gdb",
-        "filterStdout": true
+        "filterStdout": true,
+        "setupCommands": [
+          {
+            "description": "Setup pretty-printing for gdb",
+            "text": "python import sys;sys.path.insert(0, '/usr/share/gcc/python');from libstdcxx.v6.printers import register_libstdcxx_printers;register_libstdcxx_printers(None)",
+            "ignoreFailures": false
+          }
+        ]
+      },
+      "windows": {
+        "miDebuggerPath": "C:\\Dev\\msys64\\mingw64\\bin\\gdb.exe"
       },
       "setupCommands": [
-        {
-          "description": "Setup pretty-printing for gdb",
-          "text": "python import sys;sys.path.insert(0, '/usr/share/gcc/python');from libstdcxx.v6.printers import register_libstdcxx_printers;register_libstdcxx_printers(None)",
-          "ignoreFailures": false
-        },
         {
           "description": "Enable pretty-printing for gdb",
           "text": "-enable-pretty-printing",

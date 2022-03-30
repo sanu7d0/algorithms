@@ -1,77 +1,60 @@
+#include "memory.h"
 #include <algorithm>
 #include <iostream>
+#include <numeric>
 #include <vector>
 #define fastio cin.tie(0)->sync_with_stdio(0)
 using namespace std;
 
-int n, m;
-vector<int> adj[501];
-bool visited[501];
-bool hasCycle;
-
-void dfs(int u, int p)
+struct UnionFind
 {
-    visited[u] = true;
-    for (int v : adj[u])
-    {
-        if (!visited[v])
-            dfs(v, u);
-        else if (v != p)
-            hasCycle = true;
-    }
-}
+    int parent[501];
+    bool tree[501];
 
-int forest()
-{
-    int trees = 0;
-    for (int i = 1; i <= n; ++i)
+    void Clear(int n)
     {
-        hasCycle = false;
-        if (!visited[i])
-        {
-            dfs(i, 0);
-            if (!hasCycle)
-                trees += 1;
-        }
+        iota(parent + 1, parent + n + 1, 1);
+        memset(tree + 1, true, sizeof(bool) * n);
     }
-    return trees;
-}
+
+    int Find(int x)
+    {
+        return x == parent[x] ? x : parent[x] = Find(parent[x]);
+    }
+
+    void Union(int a, int b)
+    {
+        a = Find(a);
+        b = Find(b);
+        a == b ? tree[a] = false : parent[b] = a;
+        tree[a] |= tree[b];
+    }
+};
 
 int main()
 {
     fastio;
 
-    cin >> n >> m;
-    int caseNum = 1;
-    while (!(n == 0 && m == 0))
+    UnionFind uf;
+    for (int n, m, i = 1; cin >> n >> m && (n || m); i++)
     {
-        int v1, v2;
-        for (int i = 0; i < m; ++i)
+        int cnt = 0;
+        uf.Clear(n);
+        for (int a, b; m > 0; m--)
         {
-            cin >> v1 >> v2;
-            adj[v1].push_back(v2);
-            adj[v2].push_back(v1);
+            cin >> a >> b;
+            uf.Union(a, b);
         }
+        for (int i = 1; i <= n; i++)
+            if (i == uf.Find(i) && uf.tree[i])
+                cnt += 1;
 
-        cout << "Case " << caseNum << ": ";
-        int trees = forest();
-        switch (trees)
-        {
-        case 0:
+        cout << "Case " << i << ": ";
+        if (cnt == 0)
             cout << "No trees.\n";
-            break;
-        case 1:
+        else if (cnt == 1)
             cout << "There is one tree.\n";
-            break;
-        default:
-            cout << "A forest of " << trees << " trees.\n";
-        }
-
-        // Clear graphs
-        for (int i = 1; i <= n; ++i)
-            adj[i].clear();
-        fill(visited, visited + n + 1, false);
-        cin >> n >> m;
-        caseNum += 1;
+        else
+            cout << "A forest of " << cnt << " trees.\n";
     }
 }
