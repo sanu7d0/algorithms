@@ -29,6 +29,16 @@
             "description": "Setup pretty-printing for gdb",
             "text": "python import sys;sys.path.insert(0, '/usr/share/gcc/python');from libstdcxx.v6.printers import register_libstdcxx_printers;register_libstdcxx_printers(None)",
             "ignoreFailures": false
+          },
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          },
+          {
+            "description": "Set Disassembly Flavor to Intel",
+            "text": "-gdb-set disassembly-flavor intel",
+            "ignoreFailures": true
           }
         ]
       },
