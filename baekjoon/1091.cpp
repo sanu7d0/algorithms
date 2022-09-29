@@ -12,8 +12,10 @@ vector<int> cards;
 bool checkCards()
 {
     for (int i = 0; i < N; ++i)
-        if (cards[i] != p[i])
+    {
+        if (p[cards[i]] != i % 3)
             return false;
+    }
     return true;
 }
 
@@ -29,13 +31,13 @@ int main()
 {
     fastio;
 
-    cout << "aaa\n";
-
     cin >> N;
     p = vector<int>(N);
     s = vector<int>(N);
     cards = vector<int>(N);
 
+    int idxCount[3] = {};
+    int x;
     for (int i = 0; i < N; ++i)
         cin >> p[i];
     for (int i = 0; i < N; ++i)
@@ -46,22 +48,19 @@ int main()
     int shuffleCount = 0;
     while (true)
     {
-        auto tempCards = vector<int>(cards);
-        for (int i = 0; i < N; ++i)
-        {
-            cards[s[i]] = tempCards[i];
-        }
-
         if (checkCards())
             break;
+
+        auto tempCards = vector<int>(cards);
+        for (int i = 0; i < N; ++i)
+            cards[s[i]] = tempCards[i];
+        shuffleCount++;
 
         if (checkShuffleLoop())
         {
             shuffleCount = -1;
             break;
         }
-
-        shuffleCount++;
     }
 
     cout << shuffleCount << endl;
