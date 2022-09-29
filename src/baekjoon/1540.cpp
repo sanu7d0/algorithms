@@ -17,9 +17,8 @@ int main()
     int k = floor(sqrt(N)); // k^2 <= N < (k+1)^2
     int ans = 0;
 
-    // big square
-    for (int i = 1; i < k; ++i)
-        ans += i * i;
+    // big square - 1, 4, 9, ... (k-1)^2
+    ans += ((k - 1) * k * (2 * k - 1)) / 6;
 
     // additional squares
     int remain = N - k * k;
