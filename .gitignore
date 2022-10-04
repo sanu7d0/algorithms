@@ -7,7 +7,7 @@ settings.json
 /builder-docker
 
 # debugs
-/build
+/build/*
 *.exe
 
 # rust-cargo
