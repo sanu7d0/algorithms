@@ -3,12 +3,10 @@
 *.code-workspace
 settings.json
 
-# docker
-/builder-docker
-
 # debugs
-/build/*
+build/
 *.exe
+test/
 
 # rust-cargo
 /target
